@@ -7,12 +7,6 @@ hi Bell display: none;
 let mapleader = "½"
 let g:mapleader = "½"
 
-" Hint mode: yank magnet links
-js hints.addMode('m', 'Yank magnet link', function(element) {  util.copyToClipboard(element.href); liberator.echomsg('yanked: ' + element.href); }, function(){ return '//*[contains(@href, "magnet:?")]' });
-
-" Hint mode: yank header text (h1, h2 or h3 tags)
-js hints.addMode('h', 'Yank header', function(element) {  util.copyToClipboard(element.innerText); liberator.echomsg('yanked: ' + element.innerText); }, function(){ return '//*[local-name()="h1" or local-name()="h2" or local-name()="h3"]' });
-
 " to prevent d on the last tab from closing the window:
 :set! browser.tabs.closeWindowWithLastTab=false
 
