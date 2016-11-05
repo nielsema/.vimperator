@@ -1,0 +1,53 @@
+
+colorscheme molokai
+source ~/.vimperator/terminus.vimp
+hi Bell display: none;
+
+" set the mapleader key
+let mapleader = "½"
+let g:mapleader = "½"
+
+" Hint mode: yank magnet links
+js hints.addMode('m', 'Yank magnet link', function(element) {  util.copyToClipboard(element.href); liberator.echomsg('yanked: ' + element.href); }, function(){ return '//*[contains(@href, "magnet:?")]' });
+
+" Hint mode: yank header text (h1, h2 or h3 tags)
+js hints.addMode('h', 'Yank header', function(element) {  util.copyToClipboard(element.innerText); liberator.echomsg('yanked: ' + element.innerText); }, function(){ return '//*[local-name()="h1" or local-name()="h2" or local-name()="h3"]' });
+
+" to prevent d on the last tab from closing the window:
+:set! browser.tabs.closeWindowWithLastTab=false
+
+nnoremap h 3h
+nnoremap j 3j
+nnoremap k 3k
+nnoremap l 3l
+nnoremap <S-Right> /next<CR><CR>:nohlsearch<CR>
+nnoremap <S-Left> /previous<CR><CR>:nohlsearch<CR>
+nnoremap > :tabnext<CR>
+nnoremap < :tabNext<CR>
+nnoremap <A-<> :tabmove -1<CR>
+nnoremap <A->> :tabmove +1<CR>
+nnoremap J :jumps<CR>
+nnoremap <leader>l :tabnext<CR>
+nnoremap <leader>h :tabNext<CR>
+noremap  <leader>f F
+noremap  <leader>T :bmarks 
+noremap  <leader>t :bmarks -T 
+noremap  <leader>s :source ~/.vimperatorrc<CR>:js liberator.echomsg('sourced ~/.vimperatorrc');<CR>
+noremap  <leader>a <C-/>
+nnoremap gc :emenu Tools.Web Developer.Toggle Tools<CR>
+
+set gui=none
+set complete=sbl
+set editor="st -e vim"
+set hintchars=asdfhjkl
+set maxitems=15
+set newtab=help,addons,prefs
+set noscrollbars
+set tabnumbers
+set visualbell
+set animations
+set focuscontent
+
+map S :sanitize!<CR>
+
+" vim: set ft=vimperator:
